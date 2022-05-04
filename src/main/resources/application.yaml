@@ -1,0 +1,28 @@
+
+spring:
+  webflux:
+    base-path: /school-registration
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_URL:localhost:3307}/${MYSQL_DB_NAME:db-name}?allowPublicKeyRetrieval=true&useSSL=false
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASS}
+    initialization-mode: always
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+
+  # validate the schema, no changes to the database
+  # without it the application would start up even if the schema is not present
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+    show-sql: true
+
+  # disable database initialisation with Spring JDBC, enabled by default
+  flyway:
+    enabled: true
+    baseline-on-migrate: true

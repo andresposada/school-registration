@@ -1,0 +1,67 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.7'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id "org.flywaydb.flyway" version "8.5.0"
+}
+
+group = 'org.afp'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+flyway {
+	stream = true
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	// openapi / swagger docs
+	implementation 'org.springdoc:springdoc-openapi-webflux-ui:1.6.8'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'mysql:mysql-connector-java'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	testImplementation "org.junit.jupiter:junit-jupiter-api"
+	testImplementation "org.junit.jupiter:junit-jupiter-engine"
+
+	testRuntimeOnly "org.junit.jupiter:junit-jupiter-params"
+	testImplementation group: 'org.mockito', name: 'mockito-core'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'io.projectreactor:reactor-test'
+
+	//Faker for unit-testing
+	implementation group: 'com.github.javafaker', name: 'javafaker', version: "1.0.2"
+
+	//Logging
+	implementation group: 'ch.qos.logback', name: 'logback-classic', version: "1.2.11"
+
+	// Utilities
+	implementation group: 'commons-beanutils', name: 'commons-beanutils', version: "1.9.4"
+
+	implementation 'org.flywaydb:flyway-core'
+
+	implementation "org.mapstruct:mapstruct:1.4.2.Final"
+	annotationProcessor "org.mapstruct:mapstruct-processor:1.4.2.Final"
+}
+
+bootRun {
+	environment "SPRING_PROFILES_ACTIVE", "local"
+	minHeapSize = "1024m"
+	maxHeapSize = "2048m"
+}
+
+test {
+	useJUnitPlatform()
+}
