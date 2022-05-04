@@ -23,7 +23,7 @@ School registration system where you can do the following operations:
 - Get courses without students
 
 ## API Documentation
-For further information about the above operations, API can be found [here](https://localhost:8080/swagger-ui.html) based on OpenAPI 3 spec
+For further information about the above operations, API can be found [here](http://localhost:8080/school-registration/swagger-ui.html) based on OpenAPI 3 spec
 
 ## Requirements
 
@@ -63,7 +63,7 @@ MYSQL_URL=localhost:3307 MYSQL_DB_NAME=school-registration-db MYSQL_USERNAME=roo
 ``` bash
 MYSQL_URL=localhost:3307 MYSQL_DB_NAME=school-registration-db MYSQL_USERNAME=root MYSQL_PASS=mysqlpass ./gradlew bootRun
 ```
-Once the server starts, navigate to [Swagger API](https://localhost:8080/swagger-ui.html) to view API docs for your service
+Once the server starts, navigate to [Swagger API](http://localhost:8080/school-registration/swagger-ui.html) to view API docs for your service
 
 To debug the service locally, you can start the service with the following command and then attach a remote debugger from your IDE
 
