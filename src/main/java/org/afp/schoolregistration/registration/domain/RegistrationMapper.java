@@ -22,7 +22,7 @@ public interface RegistrationMapper {
   @Mapping(source = "registration.id", target = "id")
   RegistrationResponse registrationToRegistrationResponse(Registration registration);
 
-
+  @Mapping(target = "courseName", ignore = true)
+  @Mapping(target = "students", ignore = true)
   RegistrationByCourseResponse registrationToRegistrationByCourseResponse(Registration registration);
-
 }
